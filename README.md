@@ -1,7 +1,7 @@
 # TC1001S
 Personas que participaron en el proyecto: 
-Daniel Alvarez Sil - A01800182
-Juan Manuel Torres Rottonda - A01800476
+# Daniel Alvarez Sil - A01800182
+# Juan Manuel Torres Rottonda - A01800476
 
 Este proyecto consiste en, mediante la utilización de un controlador de versiones, modificar y documentar 5 juegos de la librería de freegames de Python. Las modificaciones realizadas añaden funcionalidad a los juegos y son detalladas en la documentación de cada juego. 
 
