@@ -9,7 +9,7 @@ Exercises
 5. Add width parameter.
 """
 
-# Se import turtle
+# Se import la libreria turtle
 from turtle import *
 
 # Se importa vector de freegames
