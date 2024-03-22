@@ -41,7 +41,7 @@ def square(start, end):
 
 def circulo(start, end):
     """Draw circle from start to end."""
-    # Calculamos el radio del circulo
+    # Calculamos el radio del circulo a trazar
     radius = (((end.x - start.x) ** 2 + (end.y - start.y) ** 2) ** 0.5) / 2
 
     # Movemos el cursor al inicio de la trayectoria
