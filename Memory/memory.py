@@ -16,6 +16,13 @@ from turtle import *
 # Importamos path de freegames
 from freegames import path
 
+# Creamos las variables que guardaran la cantidad de intentos y de fichas volteadas correctamente
+intentos = 0
+fichasVolteadas = 0
+
+# Tambien, creamos una variable para modificar el marcador
+writer = Turtle(visible = False)
+
 # Guardamos la imagen que se desplegara si el usuario termina el juego
 car = path('car.gif')
 # Creamos la lista de fichas en el tablero, la cual está compuesta por los numeros del 1 al 32, repetidos dos veces
@@ -51,9 +58,12 @@ def xy(count):
 
 # Esta funcion nos permite manipular las consecuencias de los eventos del juego de memoria
 def tap(x, y):
+    global intentos, fichasVolteadas
     """Update mark and hidden tiles based on tap."""
     spot = index(x, y)
     mark = state['mark']
+    # Aumentamos la cantidad de intentos realizados
+    intentos += 1
     if mark is None or mark == spot or tiles[mark] != tiles[spot]:
 	# Accion a seguir si es el primer turno del juego, si el jugador escogio la misma fecha, o si la que escogio no es la dupla de la ficha actual
         state['mark'] = spot
@@ -62,6 +72,11 @@ def tap(x, y):
         hide[spot] = False
         hide[mark] = False
         state['mark'] = None
+	    # Aumentamos la cantidad de fichas correctamente seleccionadas
+        fichasVolteadas += 2
+	# Modificamos el marcador
+    writer.undo()
+    writer.write('Intentos: ' + str(intentos) + "\nFichas Volteadas: " + str(fichasVolteadas))
 
 # Esta funcion se encarga de desplegar el tablero
 def draw():
@@ -92,11 +107,16 @@ def draw():
 shuffle(tiles)
 
 # A continuacion se establecen los parametros de la pantalla, del clic y de los graficos de turtle
-setup(420, 420, 370, 0)
+setup(800, 420, 370, 0)
 addshape(car)
 hideturtle()
 tracer(False)
 onscreenclick(tap)
+
+# Desplegamos las estadisticas
+writer.goto(225, 160)
+writer.color('black')
+writer.write('Intentos: ' + str(intentos) + "\nFichas Volteadas: " + str(fichasVolteadas))
 
 # Seguidamente, se comienza el juego 
 draw()
