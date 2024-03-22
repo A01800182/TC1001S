@@ -25,8 +25,9 @@ def tap(x, y):
     if not inside(ball):
         ball.x = -199
         ball.y = -199
-        speed.x = (x + 200) / 25
-        speed.y = (y + 200) / 25
+        # Se agrego un multiplicador * 2 para duplicar la velocidad de la bola
+        speed.x = ((x + 200) / 25) * 2
+        speed.y = ((y + 200) / 25) * 2
 
 # Define la funcion "inside" que detecta cuando deja la pantalla
 def inside(xy):
@@ -59,7 +60,8 @@ def move():
         targets.append(target)
 
     for target in targets:
-        target.x -= 0.5
+        # Se multiplica por el factor de aceleracion que busco implementar a los targets
+        target.x -= 0.5 * 1.5
 
     if inside(ball):
         speed.y -= 0.35
