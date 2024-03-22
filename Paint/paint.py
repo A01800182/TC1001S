@@ -39,9 +39,25 @@ def square(start, end):
     end_fill()
 
 
-def circle(start, end):
+def circulo(start, end):
     """Draw circle from start to end."""
-    pass  # TODO
+    # Calculamos el radio del circulo
+    radius = (((end.x - start.x) ** 2 + (end.y - start.y) ** 2) ** 0.5) / 2
+
+    # Movemos el cursor al inicio de la trayectoria
+    goto(start.x, start.y)
+    down()
+
+    # Movemos la disposicion de tal manera que el circulo se genere alrededor del radio
+    forward(radius)
+    setheading(270)
+    forward(radius)
+    setheading(0)
+
+    # Rellenamos el circulo que se dibujara
+    begin_fill()
+    circle(radius)
+    end_fill()
 
 
 def rectangle(start, end):
@@ -85,11 +101,13 @@ onkey(lambda: color('white'), 'W')
 onkey(lambda: color('green'), 'G')
 onkey(lambda: color('blue'), 'B')
 onkey(lambda: color('red'), 'R')
+# Añadimos un nuevo color por escoger
+onkey(lambda: color('yellow'), 'Y')
 
 # Estas funciones lambda nos permiten cambiar el tipo de figura
 onkey(lambda: store('shape', line), 'l')
 onkey(lambda: store('shape', square), 's')
-onkey(lambda: store('shape', circle), 'c')
+onkey(lambda: store('shape', circulo), 'c')
 onkey(lambda: store('shape', rectangle), 'r')
 onkey(lambda: store('shape', triangle), 't')
 done()
