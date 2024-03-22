@@ -63,7 +63,7 @@ def circulo(start, end):
 def rectangle(start, end):
     up()
     # Calculamos el tamano de base del rectangulo, calculando la distancia entre los puntos seleccionados por el usuario
-    base = (((end.x - start.x) ** 2 + (end.y - start.y) ** 2) ** 0.5) / 2
+    base = (((end.x - start.x) ** 2 + (end.y - start.y) ** 2) ** 0.5)
     goto(start.x, start.y)
     down()
     # Comenzamos a rellenar la figura que trazaremos (el rectangulo)
@@ -84,7 +84,7 @@ def triangle(start, end):
     """Draw triangle from start to end."""
     up()
     # Calculamos el tamano de los lados del triangulo, calculando la distancia entre los puntos seleccionados por el usuario
-    lado = (((end.x - start.x) ** 2 + (end.y - start.y) ** 2) ** 0.5) / 2
+    lado = (((end.x - start.x) ** 2 + (end.y - start.y) ** 2) ** 0.5) 
     goto(start.x, start.y)
     down()
     # Comenzamos a rellenar la figura que trazaremos (el triangulo)
