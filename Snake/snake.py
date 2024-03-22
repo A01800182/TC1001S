@@ -9,10 +9,7 @@ Exercises
 """
 
 # Aqui hace los imports necesarios de las librerias par que funcione el codigo e importamos de random choice para el movimiento de la comida
-<<<<<<< HEAD
-=======
 from random import randrange, randint, choice
->>>>>>> Snake6
 from turtle import *
 
 from freegames import square, vector
