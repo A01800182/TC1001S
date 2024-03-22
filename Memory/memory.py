@@ -25,8 +25,8 @@ writer = Turtle(visible = False)
 
 # Guardamos la imagen que se desplegara si el usuario termina el juego
 car = path('car.gif')
-# Creamos la lista de fichas en el tablero, la cual está compuesta por los numeros del 1 al 32, repetidos dos veces
-tiles = list(range(32)) * 2
+# Creamos la lista de fichas en el tablero, la cual está compuesta por las letras de la A a la Z y unos simbolos, repetidos dos veces
+tiles = [chr(65+i) for i in range(32)] * 2
 
 # Guardamos en un diccionario el valor de la tarjeta que esté volteada
 state = {'mark': None}
@@ -96,9 +96,9 @@ def draw():
     if mark is not None and hide[mark]:
         x, y = xy(mark)
         up()
-        goto(x + 2, y)
+        goto(x + 25, y)
         color('black')
-        write(tiles[mark], font=('Arial', 30, 'normal'))
+        write(tiles[mark],align="center", font=('Arial', 30, 'normal'))
 
     update()
     ontimer(draw, 100)
@@ -118,6 +118,6 @@ writer.goto(225, 160)
 writer.color('black')
 writer.write('Intentos: ' + str(intentos) + "\nFichas Volteadas: " + str(fichasVolteadas))
 
-# Seguidamente, se comienza el juego 
+# Seguidamente, se comienza el juego
 draw()
 done()
