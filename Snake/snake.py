@@ -8,10 +8,11 @@ Exercises
 4. Change the snake to respond to mouse clicks.
 """
 
-# Aqui hace los imports necesarios de las librerias par que funcione el codigo
-from random import randrange
-# Importamos de random choice para el movimiento de la comida
-from random import choice
+# Aqui hace los imports necesarios de las librerias par que funcione el codigo e importamos de random choice para el movimiento de la comida
+<<<<<<< HEAD
+=======
+from random import randrange, randint, choice
+>>>>>>> Snake6
 from turtle import *
 
 from freegames import square, vector
@@ -20,6 +21,27 @@ from freegames import square, vector
 food = vector(0, 0)
 snake = [vector(10, 0)]
 aim = vector(0, -10)
+
+# Definimos una funcion para escoger de manera aleatoria el color de la serpiente y la comida
+# Asimismo, se crean variables para guardar los colores mencionados
+colorSerpiente = ""
+colorComida = ""
+
+def colors():
+    global colorSerpiente, colorComida
+    # Creamos una lista de colores que pueden tomar la serpiente y la comida
+    colores = ["black","green","blue","yellow", "magenta"]
+    # Asignamos indice del color de la serpiente y la comida, de manera aleatoria
+    idColorSerpiente = randint(0, len(colores) - 1)
+    idColorComida = randint(0, len(colores) - 1)
+    # Se valida, que la comida y el color tengan indices distintos (colores distintos)
+    while (idColorComida == idColorSerpiente):
+        idColorComida = randint(0, len(colores) - 1)
+    # Guardamos valores de color que corresponden a los indices dentro de las variables correspondientes
+    colorSerpiente = colores[idColorSerpiente]
+    colorComida = colores[idColorComida]
+
+colors()
 
 # Define la funcion de cambio de direccion  de la serpiente
 def change(x, y):
@@ -72,9 +94,9 @@ def move():
 
     # Define el color del cuerpo de la serpiente y el de la comida
     for body in snake:
-        square(body.x, body.y, 9, 'black')
+        square(body.x, body.y, 9, colorSerpiente)
 
-    square(food.x, food.y, 9, 'green')
+    square(food.x, food.y, 9, colorComida)
     update()
     ontimer(move, 100)
 
