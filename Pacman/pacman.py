@@ -137,6 +137,14 @@ def move():
     dot(20, 'yellow')
 
     for point, course in ghosts:
+        # Establecemos que, si el fantasma está lo suficiente cerca del jugador, automaticamente, cambie direccion al jugador
+        if abs(pacman - point) < 150:
+            if (point.x == pacman.x):
+                course.y = 5 if pacman.y > point.y else -5
+                course.x = 0
+            elif (point.y == pacman.y):
+                course.x = 5 if pacman.x > point.x else -5
+                course.y = 0
         if valid(point + course):
             point.move(course)
         else:
