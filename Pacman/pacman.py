@@ -9,11 +9,15 @@ Exercises
 5. Make the ghosts smarter.
 """
 
+# Importamos la funcion choice de la libreria random
 from random import choice
+# Importamos todo de libreria turtle
 from turtle import *
 
+# Importamos floor y vector de la libreria free games
 from freegames import floor, vector
 
+# Se inicializa el marcador y las posiciones del jugador y  de los fantasmas
 state = {'score': 0}
 path = Turtle(visible=False)
 writer = Turtle(visible=False)
@@ -26,6 +30,8 @@ ghosts = [
     [vector(100, -160), vector(-5, 0)],
 ]
 # fmt: off
+
+# Inicializamos el tablero
 tiles = [
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
     0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0,
@@ -50,7 +56,7 @@ tiles = [
 ]
 # fmt: on
 
-
+# Esta funcion crea cuadrados dada una posicion xy
 def square(x, y):
     """Draw square using path at (x, y)."""
     path.up()
@@ -64,7 +70,7 @@ def square(x, y):
 
     path.end_fill()
 
-
+# Esta funcion retorna el indice de la casilla en la que se encuentra una coordenada
 def offset(point):
     """Return offset of point in tiles."""
     x = (floor(point.x, 20) + 200) / 20
@@ -72,7 +78,7 @@ def offset(point):
     index = int(x + y * 20)
     return index
 
-
+# Esta funcion valida si una casilla corresponde o no a una pared
 def valid(point):
     """Return True if point is valid in tiles."""
     index = offset(point)
@@ -87,7 +93,7 @@ def valid(point):
 
     return point.x % 20 == 0 or point.y % 20 == 0
 
-
+# Esta funcion dibuja el "mundo" del juego, incluyendo las paredes y los puntos
 def world():
     """Draw world using path."""
     bgcolor('black')
@@ -106,7 +112,7 @@ def world():
                 path.goto(x + 10, y + 10)
                 path.dot(2, 'white')
 
-
+# Esta funcion define los metodos que regiran el movimiento del jugador y de los fantasmas
 def move():
     """Move pacman and all ghosts."""
     writer.undo()
@@ -156,25 +162,33 @@ def move():
 
     ontimer(move, 100)
 
-
+# Esta funcion cambia la direccion del movimiento del jugador
 def change(x, y):
     """Change pacman aim if valid."""
     if valid(pacman + vector(x, y)):
         aim.x = x
         aim.y = y
 
+# Establecemos el tamaño de la pantalla
+setup(420, 420, 370, 0) 
 
-setup(420, 420, 370, 0)
-hideturtle()
+# Modificamos parametros de turtle
+hideturtle() 
 tracer(False)
+
+# Establecemos los valores y parametros iniciales del marcador
 writer.goto(160, 160)
 writer.color('white')
 writer.write(state['score'])
+
+# Con las siguientes lineas de codigo establecemos como se recibira la informacion por parte del usuario que corresponde al movimiento de pacman
 listen()
 onkey(lambda: change(5, 0), 'Right')
 onkey(lambda: change(-5, 0), 'Left')
 onkey(lambda: change(0, 5), 'Up')
 onkey(lambda: change(0, -5), 'Down')
+
+# Inicia el juego
 world()
 move()
 done()
