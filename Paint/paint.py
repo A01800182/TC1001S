@@ -59,15 +59,42 @@ def circulo(start, end):
     circle(radius)
     end_fill()
 
-
+# Esta funcion traza un rectangulo y rellena su figura
 def rectangle(start, end):
-    """Draw rectangle from start to end."""
-    pass  # TODO
+    up()
+    # Calculamos el tamano de base del rectangulo, calculando la distancia entre los puntos seleccionados por el usuario
+    base = (((end.x - start.x) ** 2 + (end.y - start.y) ** 2) ** 0.5) / 2
+    goto(start.x, start.y)
+    down()
+    # Comenzamos a rellenar la figura que trazaremos (el rectangulo)
+    begin_fill()
+    # Procedemos a avanzar el largo de la base, giramos 90 grados hacia la izquierda, y avanzamos el largo de la altura
+    forward(base)
+    left(90)
+    forward(8)
+    left(90)
+    forward (base)
+    left (90)
+    forward(8)
+    left(90)
+    end_fill()
 
-
+# Esta funcion traza un triangula y rellena su figura
 def triangle(start, end):
     """Draw triangle from start to end."""
-    pass  # TODO
+    up()
+    # Calculamos el tamano de los lados del triangulo, calculando la distancia entre los puntos seleccionados por el usuario
+    lado = (((end.x - start.x) ** 2 + (end.y - start.y) ** 2) ** 0.5) / 2
+    goto(start.x, start.y)
+    down()
+    # Comenzamos a rellenar la figura que trazaremos (el triangulo)
+    begin_fill()
+    for _ in range(3):
+        # Avanzamos la distancia calculada como el lado de la figura
+        forward(lado)
+        # Nos movemos hacia la izquierda en un angulo de 120 porque un triangulo tiene una suma total de angulos de 360 grados 
+        left(120)
+    end_fill()
 
 # Con esta funcion, guardamos la posición de inicio de la figura y establecemos que el tipo de figura es la de 'linea'
 def tap(x, y):
