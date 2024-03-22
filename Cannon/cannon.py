@@ -58,8 +58,12 @@ def move():
         target = vector(200, y)
         targets.append(target)
 
+    # Con este codigo, se establece que las pelotas se moverán hacia la izquierda en intervalos de 0.5
     for target in targets:
         target.x -= 0.5
+	# De igual manera, si la pelota sale de los limites del tablero, la reposicionamos dentro de el nuevamente
+        if target.x <=-199:
+            target.x = 199
 
     if inside(ball):
         speed.y -= 0.35
