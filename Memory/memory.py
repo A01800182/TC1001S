@@ -77,6 +77,9 @@ def tap(x, y):
 	# Modificamos el marcador
     writer.undo()
     writer.write('Intentos: ' + str(intentos) + "\nFichas Volteadas: " + str(fichasVolteadas))
+    if fichasVolteadas == 64:
+        writer.undo()
+        writer.write('Intentos: ' + str(intentos) + "\nFichas Volteadas: " + str(fichasVolteadas) + "\n¡Felicidades has destapado todos los cuadros!")
 
 # Esta funcion se encarga de desplegar el tablero
 def draw():
