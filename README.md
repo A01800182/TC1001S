@@ -7,5 +7,5 @@ Este proyecto consiste en, mediante la utilización de un controlador de version
 
 Este repositorio contendrá los archivos necesarios para completar la evidencia de la Semana Tec: Herramientas Computacionales - el Arte de la Programación. 
 
-Este repositorio puede ser clonado y contiene 5 carpetas, dentro de las cuales se incluye el archivo de Python de el juego que corresponda y su archivo README correspondiente. 
+Este repositorio puede ser clonado y contiene 5 carpetas, dentro de las cuales se incluye el archivo de Python de el juego que corresponda y su archivo README correspondiente. De igual manera, se comparte el link asociado a la documentación del código fuente de los juegos http://www.grantjenks.com/docs/freegames/
 
